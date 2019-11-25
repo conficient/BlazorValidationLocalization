@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.161
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorValidationLocalization", "BlazorValidationLocalization\BlazorValidationLocalization.csproj", "{CF4C976C-9279-41E3-A7F3-608DF7392602}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF4C976C-9279-41E3-A7F3-608DF7392602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF4C976C-9279-41E3-A7F3-608DF7392602}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF4C976C-9279-41E3-A7F3-608DF7392602}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF4C976C-9279-41E3-A7F3-608DF7392602}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC79055A-A443-4AAE-9915-28A9F4EA4B09}
+	EndGlobalSection
+EndGlobal
