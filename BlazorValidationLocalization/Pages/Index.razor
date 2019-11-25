@@ -1,7 +1,74 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<h1>Localization of Validation Messages in Blazor</h1>
 
-Welcome to your new app.
+<div class="row">
+    <div class="col-3">
+        Change language:
+    </div>
+    <div class="col-9">
+        <select class="form-control" @onchange="LanguageChanged">
+            @foreach (var item in languages)
+            {
+                string thisKey = item.Key;
+                <option value="@item.Key" selected='@(Language==thisKey)'>@item.Value</option>
+            }
+        </select>
+    </div>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<EditForm Model="ViewModel" OnValidSubmit="ValidSubmit" OnInvalidSubmit="InvalidSubmit">
+    <FluentValidationValidator />
+    <ValidationSummary />
+
+    <h1>@LanguageName</h1>
+
+    <label>Product Code</label>
+    <InputText @bind-Value="ViewModel.ProductCode" class="form-control" />
+    <ValidationMessage For="@(() => ViewModel.ProductCode)" />
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+<p>@Message</p>
+
+@code
+{
+    private Dictionary<string, string> languages = new Dictionary<string, string>()
+    {
+        { "en", "English" },
+        { "ar", "Arabic عربي" },
+        { "fr", "Francais" },
+        { "de", "Deutsche" },
+        { "hi", "Hindi" }
+    };
+
+    ProductViewModel ViewModel = new ProductViewModel();
+
+    public string Language = "en";
+
+    public string LanguageName = "English";
+
+    private void LanguageChanged(ChangeEventArgs args)
+    {
+        Language = (string)args.Value;
+        // Set the language manually in FluentValidation
+        // in client-side Blazor we will evenually be able to detect locale 
+        ProductViewModelValidator.SetLanguage(Language);
+        string languageName = languages[Language];
+        Message = $"Language changed to {languageName}";
+    }
+
+    public string Message = string.Empty;
+
+    protected void ValidSubmit()
+    {
+        Message = "The entry was accepted";
+    }
+
+    protected void InvalidSubmit()
+    {
+        Message = "The entry was NOT accepted";
+
+    }
+}
