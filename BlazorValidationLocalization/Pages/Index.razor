@@ -20,8 +20,8 @@
 <EditForm Model="ViewModel" OnValidSubmit="ValidSubmit" OnInvalidSubmit="InvalidSubmit">
     <FluentValidationValidator />
     <ValidationSummary />
-
-    <h1>@LanguageName</h1>
+    
+    <h3>@LanguageName</h3>
 
     <label>Product Code</label>
     <InputText @bind-Value="ViewModel.ProductCode" class="form-control" />
@@ -55,8 +55,8 @@
         // Set the language manually in FluentValidation
         // in client-side Blazor we will evenually be able to detect locale 
         ProductViewModelValidator.SetLanguage(Language);
-        string languageName = languages[Language];
-        Message = $"Language changed to {languageName}";
+        LanguageName = languages[Language];
+        Message = $"Language changed to {LanguageName}";
     }
 
     public string Message = string.Empty;
